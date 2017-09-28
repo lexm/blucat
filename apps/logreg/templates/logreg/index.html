@@ -1,0 +1,18 @@
+{% extends 'logreg/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<header>
+  <h2>Welcome!</h2>
+</header>
+<main>
+  <div>
+    <div>
+      {% crispy form1 %}
+    </div>
+    <div>
+      {% crispy form2 %}
+    </div>
+  </div>
+</main>
+{% endblock %}
