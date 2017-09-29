@@ -56,6 +56,7 @@ def add(request):
         post = request.POST
         form = PlanForm(post)
         if form.is_valid():
+            print post
             dest = post.get('dest')
             descr = post.get('descr')
             start = post.get('start')
