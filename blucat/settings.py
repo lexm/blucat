@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'apps.logreg',
+    'apps.travels',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

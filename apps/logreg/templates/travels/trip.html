@@ -1,0 +1,16 @@
+{% extends 'travels/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main>
+  <h2>{{ plan.dest }}</h2>
+  <p>Planned By: {{plan.planned_by.full_name}}</p>
+  <p>Description: {{plan.desc}}</p>
+  <p>Travel Date From: {{plan.start}}</p>
+  <p>Travel Date To: {{plan.end}}</p>
+  <h3>Other users joining the trip:</h3>
+  {% for joiner in joiners %}
+  <p>{{ joiner.full_name }}</p>
+  {% endfor %}
+</main>
+{% endblock %}

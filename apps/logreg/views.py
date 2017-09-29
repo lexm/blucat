@@ -27,7 +27,7 @@ def register(request):
             hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
             user = User.objects.create(full_name=full_name, alias=alias, hash=hash)
             request.session['id'] = user.id
-            return render(request, "logreg/yeah.html")
+            return redirect("/travels")
         else:
             form2 = LoginForm
             context = {
@@ -48,7 +48,7 @@ def login(request):
             passwd = post.get('password')
             user = User.objects.get(alias=login)
             request.session['id'] = user.id
-            return render(request, "logreg/yeah.html")
+            return redirect("/travels")
         else:
             form1 = RegForm()
             context = {

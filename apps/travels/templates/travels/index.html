@@ -1,11 +1,47 @@
 {% extends 'travels/base.html' %}
-{% load crispy_forms_tags %}
+<!-- {% load crispy_forms_tags %} -->
 
 {% block content %}
 <header>
-  <h2>Add a Trip</h2>
+  <h2>Hello, {{name}}!</h2>
 </header>
 <main>
-  {% crispy form %}
+  <h4>Your Trip Schedules</h4>
+  <table>
+    <tr>
+      <th>Destination</th>
+      <th>Travel Start Date</th>
+      <th>Travel End Date</th>
+      <th>Plan</th>
+    </tr>
+    {% for trip in trips %}
+    <tr>
+      <td>{{trip.dest}}</td>
+      <td>{{trip.start}}</td>
+      <td>{{trip.end}}</td>
+      <td>{{trip.descr}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h4>Other Users' Travel Plans</h4>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Destination</th>
+      <th>Travel Start Date</th>
+      <th>Travel End Date</th>
+      <th>Do You Want to Join?</th>
+    </tr>
+    {% for trip in others %}
+    <tr>
+      <td>{{trip.planner}}</td>
+      <td>{{trip.dest}}</td>
+      <td>{{trip.start}}</td>
+      <td>{{trip.end}}</td>
+      <td><a href="#">Join</a></td>
+    </tr>
+    {% endfor %}
+    <h4><a href="/travels/add">Add Travel Plan</a></h4>
+  </table>
 </main>
 {% endblock %}
