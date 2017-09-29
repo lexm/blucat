@@ -22,10 +22,10 @@ def register(request):
         if form.is_valid():
             full_name = post.get('full_name')
             alias = post.get('alias')
-            email = post.get('email')
+            # email = post.get('email')
             password = post.get('password')
             hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-            user = User.objects.create(full_name=full_name, alias=alias, email=email, hash=hash)
+            user = User.objects.create(full_name=full_name, alias=alias, hash=hash)
             request.session['id'] = user.id
             return render(request, "logreg/yeah.html")
         else:
@@ -44,9 +44,9 @@ def login(request):
         post = request.POST
         form = LoginForm(request.POST)
         if form.is_valid():
-            login = post.get('email')
+            login = post.get('alias')
             passwd = post.get('password')
-            user = User.objects.get(email=login)
+            user = User.objects.get(alias=login)
             request.session['id'] = user.id
             return render(request, "logreg/yeah.html")
         else:
@@ -58,9 +58,9 @@ def login(request):
             }
             return render(request, 'logreg/index.html', context)
     else:
-        return redirect('/logreg')
+        return redirect('/main')
 
 def logout(request):
     if 'id' in request.session:
         del request.session['id']
-    return redirect('/logreg')
+    return redirect('/main')

@@ -1,0 +1,11 @@
+{% extends 'travels/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<header>
+  <h2>Add a Trip</h2>
+</header>
+<main>
+  {% crispy form %}
+</main>
+{% endblock %}
